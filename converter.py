@@ -1,46 +1,72 @@
-"""Se definen las funciones que corresponden a cada opción del menú y que van a 
-llevar a cabo la tarea de convertir el contenido del archivo inicial al 
-resultado. Estas funciones se utilizan en task_manager."""
+"""
+Contiene las funciones núcleo.
+Transforman secuencias de nucleótidos de ADN, ARN y codones. 
+"""
 
+def count_nucleotides(nucleotides: str) -> str:
+    """
+    Cuenta los nucleótidos que contiene una secuencia de ADN o ARN.
 
-def count_nucleotides(formatted_content):
-    """Cuenta los nucleótidos que contiene la secuencia de ADN o ARN"""
-    count_nucleotides = str(len(formatted_content))
-    message = f"La secuencia que ingresaste tiene {count_nucleotides} nucleótidos"
+    Args:
+        nucleotides: una secuencia de nucleótidos.
+
+    Returns: 
+        Un mensaje que indica el número de nucleótidos.
+    """
+    count = len(nucleotides)
+    message = f"La secuencia que ingresaste tiene {count} nucleótidos"
 
     return message
 
 
-def dna_to_rna(formatted_content):
-    """Transcribe la secuencia de ADN (que contiene A, G, C y T) a secuencia de 
-    ARN (que contiene A, G, C y U), es decir, cambia las T por U."""
+def dna_to_rna(dna: str) -> str:
+    """
+    Transcribe una secuencia de ADN a secuencia de ARN.
+    
+    Args:
+        dna: una secuencia de nucleótidos de ADN.
+
+    Returns:
+        Una secuencia de nucleótidos de ARN.
+    """
     rna = ""
 
-    for nucleotide in formatted_content:
+    for nucleotide in dna:
         if nucleotide == "T":
             nucleotide = "U"
         rna = rna + nucleotide
 
     return rna
 
+def rna_to_codons(rna: str) -> list:
+    """
+    Convierte una secuencia de ARN a codones.
+    
+    Args:
+        rna: una secuencia de nucleótidos de ARN.
 
-def rna_to_codons(content, codons):
-    """Parte la secuencia de ARN en una lista con cadenas de 3 caracteres 
-    (codones) utilizando recursividad. El parámetro codons debe ser 
-    inicialmente una lista vacía."""
-    if len(content) >= 3:
-        codons.append(content[0:3])
-        content = content[3:]
-        codons = rna_to_codons(content, codons)
+    Returns:
+        Una lista de codones.
+    """
+    return __rna_to_codons(rna, [])
+
+def __rna_to_codons(rna: str, codons: list) -> list:
+    """
+    Inicialmente esta función es llamada con 'codons' = [].
+    Añade a la lista 'codons' los primeros tres nucleótidos de 'rna', 
+    después elimina esos tres nucleótidos de 'rna' y lo repite de forma 
+    recursiva hasta que 'rna' tiene una longitud menor a 3.
+    """
+    CODON_LENGTH = 3
+
+    if len(rna) >= CODON_LENGTH:
+        codons.append(rna[0:3])
+        rna = rna[3:]
+        codons = __rna_to_codons(rna, codons)
 
     return codons
 
-
-"""Se escribe la traducción de codones (ARN) a aminoácidos (proteína) en forma 
-de diccionario. Cada codón es una 'palabra' y su 'definición' es el aminoácido 
-que le corresponde."""
-
-CODON_DICTIONARY = {
+CODON_DICTIONARY = {  # {codon: aminoacid}
     "UUU": "F", "CUU": "L", "AUU": "I", "GUU": "V",
     "UUC": "F", "CUC": "L", "AUC": "I", "GUC": "V",
     "UUA": "L", "CUA": "L", "AUA": "I", "GUA": "V",
@@ -56,16 +82,22 @@ CODON_DICTIONARY = {
     "UGU": "C", "CGU": "R", "AGU": "S", "GGU": "G",
     "UGC": "C", "CGC": "R", "AGC": "S", "GGC": "G",
     "UGA": "*", "CGA": "R", "AGA": "R", "GGA": "G",
-    "UGG": "W", "CGG": "R", "AGG": "R", "GGG": "G"}
+    "UGG": "W", "CGG": "R", "AGG": "R", "GGG": "G"
+    }
 
 
-def rna_to_protein(content):
-    """Manda llamar la función de rna_to_codons() para obtener la lista de 
-    codones que se van a traducir de ARN a proteína. Compara cada codón con el 
-    diccionario y escribe la secuencia de aminoácidos (proteína) en un nuevo 
-    string."""
+def rna_to_protein(rna: str) -> str:
+    """
+    Traduce una secuencia de ARN a secuencia proteíca.
+    
+    Args:
+        rna: una secuencia de ARN.
+    
+    Returns:
+        una secuencia proteíca.
+    """
 
-    codons = rna_to_codons(content, [])
+    codons = rna_to_codons(rna)
 
     protein = ""
 

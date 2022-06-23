@@ -1,26 +1,73 @@
-"""Se define una función para dar formato a la ruta del archivo. Esta función 
-se utiliza en main, en task_manager y en validator. También se define la 
-función format_content que se utiliza en task_manager y en validator"""
+"""
+Contiene funciones utilitarias relacionadas con dar formato. 
+"""
 
+def format_path(path: str) -> str:
+    """
+    Da formato a una ruta:
+        - Elimina las comillas a los extremos de la ruta.
 
-def format_path(path_to_file):
-    """Cuando se arrastra un archivo a terminal, la ruta se agrega entre 
-    comillas. Esta función es para quitar el entrecomillado en caso de que lo 
-    tenga."""
+    Args:
+        path: una ruta.
 
-    if path_to_file[0] == "'" and path_to_file[-1] == "'":
+    Returns:
+        Un string de una ruta con formato.
+    """
 
-        path_to_file = path_to_file[1:-1]
+    path = remove_spaces(path)
+    path = remove_quotes(path)
 
-    return path_to_file
+    return path
 
-def format_content(raw_content):
-    """En ocasiones el contenido del archivo viene en minúsculas, con espacios 
-    o con enters. Esta función homogeneiza el contenido para trabajar solo con 
-    nucleótidos en mayúsculas"""
-    
-    content = raw_content.upper()
-    content = content.replace("\n", "")
-    content = content.replace(" ", "")
+def remove_quotes(string: str) -> str:
+    """
+    Elimina las comillas a los extremos de un string, en caso de que las tenga.
 
-    return content
+    Args:
+        string: cualquier string.
+
+    Returns:
+        Un string sin comillas en los extremos.
+    """
+
+    if string[0] == "'" and string[-1] == "'":
+        string = string[1:-1]
+
+def remove_spaces(string: str) -> str:
+    """
+    Elimina los espacios a los extremos de un string, en caso de que los tenga.
+
+    Args:
+        string: cualquier string.
+
+    Returns:
+        Un string sin espacios en los extremos.
+    """
+
+    if string[0] == " ":
+        string = string[1:]
+
+    if string[-1] == " ":
+        string = string[:-1]
+
+    return string
+
+def format_body(body: str) -> str:
+    """
+    Da formato al cuerpo de un archivo de texto:
+        - Convierte todos los caracteres a mayúsculas.
+        - Elimina los enters.
+        - Elimina los espacios.
+
+    Args:
+        body: el cuerpo de un archivo.
+
+    Returns:
+        El cuerpo de un archivo formateado.
+    """
+
+    body = body.upper()
+    body = body.replace("\n", "")
+    body = body.replace(" ", "")
+
+    return body
