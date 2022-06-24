@@ -24,7 +24,8 @@ def is_option_valid(option: str) -> bool:
 
 
 def file_exists(path_to_file: str) -> bool:
-    """Evalúa si una ruta corresponde a un archivo que sí existe.
+    """
+    Evalúa si una ruta corresponde a un archivo que sí existe.
     
     Args:
         path_to_file: una ruta
@@ -40,7 +41,8 @@ def file_exists(path_to_file: str) -> bool:
 
 
 def is_body_valid(path_to_file: str) -> bool:
-    """Evalúa que el contenido del archivo corresponda a una secuencia 
+    """
+    Evalúa que el contenido del archivo corresponda a una secuencia 
     de ADN o de ARN.
     
     Args:
