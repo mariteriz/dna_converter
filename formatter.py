@@ -2,6 +2,26 @@
 Contiene funciones utilitarias relacionadas con dar formato. 
 """
 
+def format_body(body: str) -> str:
+    """
+    Da formato al cuerpo de un archivo de texto:
+        - Convierte todos los caracteres a mayúsculas.
+        - Elimina los enters.
+        - Elimina los espacios.
+
+    Args:
+        body: el cuerpo de un archivo.
+
+    Returns:
+        El cuerpo de un archivo formateado.
+    """
+
+    body = body.upper()
+    body = body.replace("\n", "")
+    body = body.replace(" ", "")
+
+    return body
+
 def format_path(path: str) -> str:
     """
     Da formato a una ruta:
@@ -54,22 +74,3 @@ def remove_spaces(string: str) -> str:
 
     return string
 
-def format_body(body: str) -> str:
-    """
-    Da formato al cuerpo de un archivo de texto:
-        - Convierte todos los caracteres a mayúsculas.
-        - Elimina los enters.
-        - Elimina los espacios.
-
-    Args:
-        body: el cuerpo de un archivo.
-
-    Returns:
-        El cuerpo de un archivo formateado.
-    """
-
-    body = body.upper()
-    body = body.replace("\n", "")
-    body = body.replace(" ", "")
-
-    return body
