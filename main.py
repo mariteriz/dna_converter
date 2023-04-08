@@ -3,7 +3,7 @@ El archivo que se ejecuta y en el que se da la interacción con el
 usuario.
 """
 
-from formatter import format_path
+from data_parser import format_path
 from task_manager import task_manager
 from validator import is_option_valid, file_exists, is_body_valid
 
@@ -18,20 +18,16 @@ MENU = """
 
 print("Bienvenido")
 
-"""
-Inicia un ciclo while en True para que el programa se ejecute hasta que
-el usuario indique lo contrario.
-"""
+# Inicia un ciclo while en True para que el programa se ejecute hasta que
+# el usuario indique lo contrario.
 while True:
 
     print(MENU)
 
     option = input("\nIngresa el número correspondiente a la opción deseada: ")
 
-    """
-    Si se ingresa la opción 0, sale del ciclo while para terminar el 
-    programa.
-    """
+    # Si se ingresa la opción 0, sale del ciclo while para terminar el
+    # programa.
     if option == "0":
         break
 

@@ -4,10 +4,10 @@ Contiene funciones necesarias para validación.
 
 from pathlib import Path
 from file_handler import FileHandler
-from formatter import format_body, format_path
+from data_parser import format_body, format_path
 
 
-def is_option_valid(option: str) -> bool: 
+def is_option_valid(option: str) -> bool:
     """
     Evalúa si la opción se encuentra en el menú.
 
@@ -18,9 +18,9 @@ def is_option_valid(option: str) -> bool:
         True si la opción está en el menú, False si no lo está.
     """
 
-    is_option_valid = option in "0123"
+    option_valid = option in "0123"
 
-    return is_option_valid
+    return option_valid
 
 
 def file_exists(path_to_file: str) -> bool:
@@ -35,9 +35,9 @@ def file_exists(path_to_file: str) -> bool:
     """
 
     path_to_file = Path(path_to_file)
-    file_exists = path_to_file.is_file()
+    exists = path_to_file.is_file()
 
-    return file_exists
+    return exists
 
 
 def is_body_valid(path_to_file: str) -> bool:
@@ -61,9 +61,9 @@ def is_body_valid(path_to_file: str) -> bool:
     for nucleotide in body:
 
         if nucleotide in "AGCTU":
-            is_body_valid = True
+            body_valid = True
         else:
-            is_body_valid = False
+            body_valid = False
             break
 
-    return is_body_valid
+    return body_valid

@@ -3,7 +3,7 @@ Contiene la función que se encarga manejar las tareas, es decir, de
 conectar la opción elegida con la función correspondiente.
 """
 
-from formatter import format_body, format_path
+from data_parser import format_body, format_path
 from file_handler import FileHandler
 from converter import count_nucleotides, dna_to_rna, rna_to_protein
 
@@ -35,5 +35,5 @@ def task_manager(option, path_to_file):
     elif option == "3":
         converted_body = rna_to_protein(body)
         suffix = "to_protein"
-    
+
     file_handler.write_file(converted_body, suffix)
