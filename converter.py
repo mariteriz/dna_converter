@@ -1,17 +1,16 @@
 """
-Contiene las funciones núcleo.
-Transforman secuencias de nucleótidos de ADN, ARN y codones. 
+Core functions. Functions that transform DNA, RNA and codons sequences. 
 """
 
 def count_nucleotides(nucleotides: str) -> str:
     """
-    Cuenta los nucleótidos que contiene una secuencia de ADN o ARN.
+    Count the nucleotides in the DNA or RNA sequence.
 
     Args:
-        nucleotides: una secuencia de nucleótidos.
+        nucleotides: a nucleotide (DNA or RNA) sequence.
 
     Returns: 
-        Un mensaje que indica el número de nucleótidos.
+        A message indicating the number of nucleotides.
     """
     count = len(nucleotides)
     message = f"La secuencia que ingresaste tiene {count} nucleótidos"
@@ -21,13 +20,13 @@ def count_nucleotides(nucleotides: str) -> str:
 
 def dna_to_rna(dna: str) -> str:
     """
-    Transcribe una secuencia de ADN a secuencia de ARN.
+    Transcription of DNA to RNA sequence.
     
     Args:
-        dna: una secuencia de nucleótidos de ADN.
+        dna: a DNA nucleotide sequence
 
     Returns:
-        Una secuencia de nucleótidos de ARN.
+        An RNA nucleotide sequence.
     """
     rna = ""
 
@@ -40,22 +39,22 @@ def dna_to_rna(dna: str) -> str:
 
 def rna_to_codons(rna: str) -> list:
     """
-    Convierte una secuencia de ARN a codones.
+    Converts an RNA sequence to codons.
     
     Args:
-        rna: una secuencia de nucleótidos de ARN.
+        rna: An RNA nucleotide sequence.
 
     Returns:
-        Una lista de codones.
+        A list of codons.
     """
     return __rna_to_codons(rna, [])
 
 def __rna_to_codons(rna: str, codons: list) -> list:
     """
-    Inicialmente esta función es llamada con 'codons' = [].
-    Añade a la lista 'codons' los primeros tres nucleótidos de 'rna', 
-    después elimina esos tres nucleótidos de 'rna' y lo repite de forma 
-    recursiva hasta que 'rna' tiene una longitud menor a 3.
+    Initially this function is called with `codons` = []. Adds the first
+    three RNA nucleotides to the `codons` list, then removes those three
+    nucleotides from `rna` and repeats it recursively until `rna` is 
+    less than 3 in lenght.
     """
     CODON_LENGTH = 3
 
@@ -88,13 +87,13 @@ CODON_DICTIONARY = {  # {codon: aminoacid}
 
 def rna_to_protein(rna: str) -> str:
     """
-    Traduce una secuencia de ARN a secuencia proteíca.
+    Translates an RNA sequence to protein sequence.
     
     Args:
-        rna: una secuencia de ARN.
+        rna: an RNA sequence
     
     Returns:
-        una secuencia proteíca.
+        a protein sequence.
     """
 
     codons = rna_to_codons(rna)

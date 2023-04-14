@@ -1,6 +1,6 @@
 """
-El archivo que se ejecuta y en el que se da la interacción con el 
-usuario.
+The file that is executed and in which the interaction with the user 
+happens.
 """
 
 from data_parser import format_path
@@ -18,16 +18,16 @@ MENU = """
 
 print("Bienvenido")
 
-# Inicia un ciclo while en True para que el programa se ejecute hasta que
-# el usuario indique lo contrario.
+# Initiates a while loop to True so that the program runs until the user
+# indicates otherwise.
 while True:
 
     print(MENU)
 
     option = input("\nIngresa el número correspondiente a la opción deseada: ")
 
-    # Si se ingresa la opción 0, sale del ciclo while para terminar el
-    # programa.
+    # If option 0 is entered, it exists the while loop to the end of the
+    # program.
     if option == "0":
         break
 

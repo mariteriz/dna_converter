@@ -1,6 +1,6 @@
 """
-Contiene la función que se encarga manejar las tareas, es decir, de 
-conectar la opción elegida con la función correspondiente.
+Function that is in charge of managing tasks, that is, that connects the 
+chosen option with the corresponding function.
 """
 
 from data_parser import format_body, format_path
@@ -10,12 +10,12 @@ from converter import count_nucleotides, dna_to_rna, rna_to_protein
 
 def task_manager(option, path_to_file):
     """
-    Ejecuta la tarea correspondiente a 'option' sobre el archivo en
-    'path_to_file'. Guarda el resultado en un archivo nuevo.
+    Run the task corresponding to `option` on the file at 
+    `path_to_file`. Save the result in a new file.
 
     Args:
-        option: una opción del menú
-        path_to_file: ruta del archivo 
+        option: one of the options available on the menu.
+        path_to_file: the file path
     """
 
     path_to_file = format_path(path_to_file)

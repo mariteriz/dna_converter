@@ -1,19 +1,19 @@
 """
-Contiene funciones utilitarias relacionadas con dar formato. 
+Utility functions related to data formatting.
 """
 
 def format_body(body: str) -> str:
     """
-    Da formato al cuerpo de un archivo de texto:
-        - Convierte todos los caracteres a mayúsculas.
-        - Elimina los enters.
-        - Elimina los espacios.
+    Format the body of a text file:
+        - Converts all characters to uppercase.
+        - Deletes enters.
+        - Remove spaces.
 
     Args:
-        body: el cuerpo de un archivo.
+        body: the body of a file.
 
     Returns:
-        El cuerpo de un archivo formateado.
+        Formatted body of a file.
     """
 
     body = body.upper()
@@ -24,14 +24,14 @@ def format_body(body: str) -> str:
 
 def format_path(path: str) -> str:
     """
-    Da formato a una ruta:
-        - Elimina las comillas a los extremos de la ruta.
+    Format a path:
+        - Remove the quotes at the ends of the path.
 
     Args:
-        path: una ruta.
+        path: a path
 
     Returns:
-        Un string de una ruta con formato.
+        Formatted string path
     """
 
     path = remove_spaces(path)
@@ -41,13 +41,13 @@ def format_path(path: str) -> str:
 
 def remove_quotes(string: str) -> str:
     """
-    Elimina las comillas a los extremos de un string, en caso de que las tenga.
+    Removes the quotes at the ends of a string, in case it has them.
 
     Args:
-        string: cualquier string.
+        string: any string.
 
     Returns:
-        Un string sin comillas en los extremos.
+        A string without quotes at the ends.
     """
 
     if string[0] == "'" and string[-1] == "'":
@@ -57,13 +57,13 @@ def remove_quotes(string: str) -> str:
 
 def remove_spaces(string: str) -> str:
     """
-    Elimina los espacios a los extremos de un string, en caso de que los tenga.
+    Removes the spaces at the ends of a string, in case it has them.
 
     Args:
-        string: cualquier string.
+        string: any string.
 
     Returns:
-        Un string sin espacios en los extremos.
+        A string without spaces at the ends.
     """
 
     if string[0] == " ":
