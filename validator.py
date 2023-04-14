@@ -1,5 +1,5 @@
 """
-Contiene funciones necesarias para validación.
+Functions required for validation.
 """
 
 from pathlib import Path
@@ -9,13 +9,14 @@ from data_parser import format_body, format_path
 
 def is_option_valid(option: str) -> bool:
     """
-    Evalúa si la opción se encuentra en el menú.
+    Evaluates if the given option appears on the menu.
 
     Args: 
-        option: una de las opciones disponibles en el menú.
+        option: one of the options available on the menu.
 
     Returns: 
-        True si la opción está en el menú, False si no lo está.
+        True if the option is on the menu, False if it is not on the 
+        menu.
     """
 
     option_valid = option in "0123"
@@ -25,13 +26,13 @@ def is_option_valid(option: str) -> bool:
 
 def file_exists(path_to_file: str) -> bool:
     """
-    Evalúa si una ruta corresponde a un archivo que sí existe.
+    Evaluates if a path corresponds to a file that does exist.
     
     Args:
-        path_to_file: una ruta
+        path_to_file: a path
 
     Returns: 
-        True si el archivo existe, False si el archivo no existe.
+        True if the file exists, False if the file does not exist.
     """
 
     path_to_file = Path(path_to_file)
@@ -42,15 +43,15 @@ def file_exists(path_to_file: str) -> bool:
 
 def is_body_valid(path_to_file: str) -> bool:
     """
-    Evalúa que el contenido del archivo corresponda a una secuencia 
-    de ADN o de ARN.
+    Evaluates that the content of the file corresponds to a DNA or RNA 
+    sequence.
     
     Args:
-        path_to_file: una ruta
+        path_to_file: a path
 
     Returns:
-        True si el contenido del archivo corresponde a una secuencia de 
-        ADN o de ARN, False si no corresponde.
+        True if the content of the file corresponds to a DNA or RNA 
+        sequence, False if it does not.
     """
 
     path_to_file = format_path(path_to_file)

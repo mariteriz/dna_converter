@@ -3,32 +3,31 @@ from pathlib import Path
 
 class FileHandler():
     """
-    Una clase para representar un operador de archivos.
+    This class represents a file operator.
 
-    La clase tiene un atributo Path y hace operaciones de lectura y 
-    escritura a partir de él.
+    Class has a path attribute and does reading and writing from it.
 
-    Atrributes:
-        path_to_file (Path): Almacena la ruta del archivo con la que
-        opera el objeto.
+    Attributes:
+        path_to_file (Path): Stores the path of the file with which 
+        operate the object.
     """
 
     def __init__(self, path_to_file: str):
         """
-        Método constructor de clase.
+        Constructor method.
 
         Args:
-            path_to_file: Ruta de un archivo.
+            path_to_file: path of a file
         """
 
         self.path_to_file = Path(path_to_file)
 
     def read_file(self) -> str:
         """
-        Lee un archivo y regresa su contenido.
+        Read a file and return its content.
 
         Returns: 
-            El contenido del archivo.
+            The content of a file.
 
         """
 
@@ -38,13 +37,13 @@ class FileHandler():
 
     def write_file(self, body: str, suffix: str):
         """
-        Crea un archivo .txt en la carpeta de path_to_file, con
-        contenido body. El nombre del archivo se deriva de path_to_file
-        y el sufijo suffix.
+        Creates a .txt file in the `path_to_file` folder, with `body` as
+        content. The file name is derived from `path_to_file` and the 
+        suffix `suffix`.
 
         Args: 
-            body: el contenido del archivo.
-            suffix: el sufijo del nombre del archivo.
+            body: the content of a file.
+            suffix: the suffix of the file name.
         """
 
         path_to_folder = self.path_to_file.parent
